@@ -1,0 +1,30 @@
+celsius = float(input("Введіть температуру у градусах Цельсія: "))
+
+fahrenheit = celsius * 9/5 + 32
+
+print("Температура у Фаренгейтах:", fahrenheit)
+
+import tkinter as tk
+from tkinter import messagebox
+
+def convert():
+    try:
+        celsius = float(entry.get())
+        fahrenheit = celsius * 9/5 + 32
+        result_label.config(text=f"Температура у Фаренгейтах: {fahrenheit:.2f}")
+    except ValueError:
+        messagebox.showerror("Помилка", "Будь ласка, введіть числове значення!")
+
+root = tk.Tk()
+root.title("Конвертер температури")
+
+tk.Label(root, text="Введіть температуру в Цельсіях:").pack(pady=5)
+entry = tk.Entry(root)
+entry.pack(pady=5)
+
+tk.Button(root, text="Конвертувати", command=convert).pack(pady=10)
+
+result_label = tk.Label(root, text="")
+result_label.pack(pady=10)
+
+root.mainloop()
